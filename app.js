@@ -31,4 +31,3 @@ app.post('/postAsset', async (req, res)  => {
     result = await collection.insertOne(data);
     res.send(result);
 });
-
