@@ -2,29 +2,30 @@ const { MongoClient } = require("mongodb");
 const express = require('express');
 
 const uri =
-"mongodb+srv://kukudb:kukudb@my-cluster.gdjpc4s.mongodb.net/?retryWrites=true&w=majority";
+"mongodb+srv://wasif1060:wasif1050@cluster0.bzinu5s.mongodb.net/?retryWrites=true&w=majority";
 
 const client = new MongoClient(uri);
 // await client.connect();
-const dbName = "My-Cluster";
-const collectionName = "assets";
+const dbName = "mernproject";
+const collectionName = "students";
 const database = client.db(dbName);
 const collection = database.collection(collectionName);
-var port = process.env.PORT || 3000;
-
+var port = process.env.PORT || 5000;
+var cors = require('cors')
 const app = express();
+app.use(cors())
 app.listen (port, () => console.log('Server is running on port: '+ port));
 
 // trigger
 
 app.use(express.json());
 
-app.get('/getAsset', async (req, res)  => {
+app.get('/getStudent', async (req, res)  => {
     result = await collection.find().toArray();
     res.send(result);
 });
 
-app.post('/postAsset', async (req, res)  => {
+app.post('/postStudent', async (req, res)  => {
     console.log(req.body);
     data = req.body;
     data['createdat'] = new Date();
