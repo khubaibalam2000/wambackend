@@ -32,4 +32,3 @@ app.post('/postStudent', async (req, res)  => {
     result = await collection.insertOne(data);
     res.send(result);
 });
-
